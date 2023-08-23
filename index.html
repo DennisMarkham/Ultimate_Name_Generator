@@ -21,31 +21,31 @@
 //this is just to generate a list of checkboxes.  It assumes male and female names have the same keys.
 //gosh this is a crude program, but at least I'm practicing.
 
-const maleNames = {
 
+const maleNames={
 	anglo: ["John", "Jeffery", "Sam", "Scott", "Todd"],
 	french: ["Pierre", "Jacques", "Jean", "Simon"],
 	spanish: ["Pedro", "Jorge", "Jose", "Diego", "Carlos"]
-	};
+}
 
-	const femaleNames = {
+
+const femaleNames={	
 	anglo: ["Jennifer", "Susan", "Alexandra", "Tiffany"],
 	french: ["Claire", "Elise", "Marie"],
 	spanish: ["Carmen", "Angelita"]
-};
+}
 
-	const surnames = {
-		anglo: ["Smith", "Hill", "Jones"],
-		french: ["Dupuis", "Dupont", "Trichet", "Duclare"],
-		spanish: ["Juarez", "Gomez", "Hernandez"]
-	};
+const surnames={	
+	anglo: ["Smith", "Hill", "Jones"],
+	french: ["Dupuis", "Dupont", "Trichet", "Duclare"],
+	spanish: ["Juarez", "Gomez", "Hernandez"]
+	}
 
-	const firstNameCultures = Object.keys(maleNames);
+	
+const firstNameCultures = Object.keys(maleNames);
 
-	const surnameCultures = Object.keys(surnames);
+const surnameCultures = Object.keys(surnames);
 
-//okay, all the checkboxes are given "values" that can double as a reference to the arrays in the object
-//I seriously doubt this will work but I might as well give it a try
 	for(x in firstNameCultures){
 		$("#firstNameSpace").append("<input type = 'checkbox' class = 'fn' value = 'maleNames." + x + "'>" + firstNameCultures[x] + "<br>")
 
@@ -54,6 +54,8 @@ const maleNames = {
 	for(x in surnameCultures){
 		$("#surnameSpace").append("<input type = 'checkbox' value = 'surnames." + x + "'>" + surnameCultures[x] + "<br>")
 	}
+
+
 
 	function genName(){
 
@@ -71,10 +73,9 @@ const maleNames = {
 		 for (let x of fnCheckBoxes){
 		 	if (x.checked)
 		 	{
-		 		//if the x is checked on this input, you concat selectionPool with what's listed in the value
+		 		
 		 		console.log("checked");
-		 		//this only fires once.  Weird.
-		 		//okay, enough goofing around.  Let's just revert this and then ask how to do this a simple way on Stackoverflow
+		 		
 
 		 		
 		 		selectionPool.concat[x.value]
