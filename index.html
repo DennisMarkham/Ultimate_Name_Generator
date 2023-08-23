@@ -9,90 +9,111 @@
 	<br />
 	First name:
 	<br />
-	<div id = "firstNameSpace"></div>
+	<div class = "nameSpace">
+		<input type = "checkbox" value = "anglo" class = "firstName">
+		<br />
+		<input type = "checkbox" value = "french" class = "firstName">
+		<br />
+		<input type = "checkbox" value = "spanish" class = "firstName">
+	</div>
 	<br />
 	Last name:
-	<div id = "surnameSpace"></div>
+	<div class = "nameSpace">
+		<input type = "checkbox" value = "anglo" class = "surname">
+		<br />
+		<input type = "checkbox" value = "french" class = "surname">
+		<br />
+		<input type = "checkbox" value = "spanish" class = "surname">
+	</div>
 	<br />
 	<button onClick="genName()">Generate Name</button>
 	<p id = "generatedName"></p>
 <script>
 
 
+f_anglo = ["Stacey", "Jennifer", "Kelsey"];
+f_french = ["Marie", "Claire", "Elise"];
+f_spanish = ["Carmen", "Angelita"];
+
+m_anglo = ["John", "Mike", "Jason"];
+m_french = ["Pierre", "Jean", "Didier"];
+m_spanish = ["Diego", "Jorge", "Jose"];
+
+s_anglo = ["Smith", "Jones", "Jackson"];
+s_french = ["Dupuis", "Trichet", "Brissont"];
+s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 
 
-const maleNames={
-	anglo: ["John", "Jeffery", "Sam", "Scott", "Todd"],
-	french: ["Pierre", "Jacques", "Jean", "Simon"],
-	spanish: ["Pedro", "Jorge", "Jose", "Diego", "Carlos"]
-}
-
-
-const femaleNames={	
-	anglo: ["Jennifer", "Susan", "Alexandra", "Tiffany"],
-	french: ["Claire", "Elise", "Marie"],
-	spanish: ["Carmen", "Angelita"]
-}
-
-const surnames={	
-	anglo: ["Smith", "Hill", "Jones"],
-	french: ["Dupuis", "Dupont", "Trichet", "Duclare"],
-	spanish: ["Juarez", "Gomez", "Hernandez"]
-	}
-
-	
-const firstNameCultures = Object.keys(maleNames);
-
-const surnameCultures = Object.keys(surnames);
-
-	for(x in firstNameCultures){
-		$("#firstNameSpace").append("<input type = 'checkbox' class = 'fn' value = 'maleNames." + firstNameCultures[x] + "'>" + firstNameCultures[x] + "<br>")
-
-	}
-
-	for(x in surnameCultures){
-		$("#surnameSpace").append("<input type = 'checkbox' value = 'surnames." + surnameCultures[x] + "'>" + surnameCultures[x] + "<br>")
-	}
 
 
 
 	function genName(){
 
 	
-		console.log("Function firing");
+		
+
+		let firstNameBoxes = document.getElementsByClassName("firstName");
+		let surnameBoxes = document.getElementsByClassName("surname");
 
 
 		if($("#gender").val() == "male")
 		{
-		 const selectionPool = []
+		let potentialFirstNames = [];
+		let potentialSurnames = [];
 
-		 const fnCheckBoxes = document.getElementsByClassName("fn");
-		 	console.log(fnCheckBoxes);
+			for(let x in firstNameBoxes){
+				//this runs through the boxes under "Last name:" and checks which ones are checked
+				//depending on which are checked, it will add them to array of potential names
+				if(firstNameBoxes[x].checked)
+				{
+					switch(firstNameBoxes[x].value){
+						case "anglo":
+						potentialFirstNames.concat(m_anglo);
+						break;
+						case "french":
+						potentialFirstNames.concat(m_french);
+						break;
+						case "spanish":
+						potentialFirstNames.concat(m_spanish);
+						break;
 
-		 for (let x of fnCheckBoxes){
-		 	if (x.checked)
-		 	{
-		 		
-		 		console.log("checked");
-		 		console.log(x)
+					}
+				}
+			}
 
-		 		//okay, I think this cut doesn't work because this string value just cannot be a
-		 		//reference to an array?
-		 		selectionPool.concat([x.value])
-		 	}
-		 }
+			for(let x in surnameBoxes){
+				//same thing but with last names
+				if(surnameBoxes[x].checked)
+				{
+					switch(surnameBoxes[x].value)
+					{
+						case "anglo":
+						potentialSurnames.concat(s_anglo);
+						break;
+						case "french":
+						potentialSurnames.concat(s_french);
+						break;
+						case "spanish":
+						potentialSurnames.concat(s_spanish);
+						break;
+					}
+				}
+			}
 
-		 console.log(selectionPool);
-
-		}
+			//now we finally generate that name
+			//after compiling an array of potential first names  and surnames, it picks a random item
+			//from each array, and then smooshes them toghether to make a name.
+			$("#generatedName").text(potentialFirstNames[Math.floor(Math.random() * potentialFirstNames.length)] + " " +  potentialSurnames[Math.floor(Math.random() * potentialSurnames.length)]);
+		 
+		 }	
 		else
 		{
 			
 		}
 
+}
 
-
-	}
+	
 
 	
 
