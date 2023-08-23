@@ -6,31 +6,68 @@
 	<option>male</option>
 	<option>female</option>
 </select>
+	<br />
+	First name:
+	<br />
+	<div id = "firstNameSpace"></div>
+	<br />
+	Last name:
+	<div id = "surnameSpace"></div>
+	<br />
 	<button onClick="genName()">Generate Name</button>
 	<p id = "generatedName"></p>
 <script>
-	//so what are we trying to do with this program?
-	//you create a dynamic page of titles and check boxes based on object values
-	//so that you don't break your brain, let's start simple, just do anglo names
+
+//this is just to generate a list of checkboxes.  It assumes male and female names have the same keys.
+//gosh this is a crude program, but at least I'm practicing.
+
+const maleNames = {
+
+	anglo: ["John", "Jeffery", "Sam", "Scott", "Todd"],
+	french: ["Pierre", "Jacques", "Jean", "Simon"],
+	spanish: ["Pedro", "Jorge", "Jose", "Diego", "Carlos"]
+	};
+
+	const femaleNames = {
+	anglo: ["Jennifer", "Susan", "Alexandra", "Tiffany"],
+	french: ["Claire", "Elise", "Marie"],
+	spanish: ["Carmen", "Angelita"]
+};
+
+	const surnames = {
+		anglo: ["Smith", "Hill", "Jones"],
+		french: ["Dupuis", "Dupont", "Trichet", "Duclare"],
+		spanish: ["Juarez", "Gomez", "Hernandez"]
+	};
+
+	const firstNameCultures = Object.keys(maleNames);
+
+	const surnameCultures = Object.keys(surnames);
+
+	for(x in firstNameCultures){
+		$("#firstNameSpace").append("<input type = 'checkbox'>" + firstNameCultures[x] + "<br>")
+
+	}
+
+	for(x in surnameCultures){
+		$("#surnameSpace").append("<input type = 'checkbox'>" + surnameCultures[x] + "<br>")
+	}
 
 	function genName(){
 
-	const maleNames = ["John", "Jeffery", "Sam", "Scott", "Todd"];
-
-	const femaleNames = ["Jennifer", "Susan", "Alexandra", "Tiffany"];
-
-	const surnames = ["Smith", "Hill", "Jones"];
-
+	
 		console.log("Function firing");
 
 
 		if($("#gender").val() == "male")
 		{
-			$("#generatedName").text(maleNames[Math.floor(Math.random() * maleNames.length)] + " " + surnames[Math.floor(Math.random() * surnames.length)])
+		 //its going to be a royal pain figuring out how to work this part out, but for now
+		 //I'm just going to try to the interface
+
 		}
 		else
 		{
-			$("#generatedName").text(femaleNames[Math.floor(Math.random() * femaleNames.length)] + " " + surnames[Math.floor(Math.random() * surnames.length)])
+			
 		}
 
 
