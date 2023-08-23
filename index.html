@@ -1,0 +1,45 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<select id = "gender">
+	<option>male</option>
+	<option>female</option>
+</select>
+	<button onClick="genName()">Generate Name</button>
+	<p id = "generatedName"></p>
+<script>
+	//so what are we trying to do with this program?
+	//you create a dynamic page of titles and check boxes based on object values
+	//so that you don't break your brain, let's start simple, just do anglo names
+
+	function genName(){
+
+	const maleNames = ["John", "Jeffery", "Sam", "Scott", "Todd"];
+
+	const femaleNames = ["Jennifer", "Susan", "Alexandra", "Tiffany"];
+
+	const surnames = ["Smith", "Hill", "Jones"];
+
+		console.log("Function firing");
+
+
+		if($("#gender").val() == "male")
+		{
+			$("#generatedName").text(maleNames[Math.floor(Math.random() * maleNames.length)] + " " + surnames[Math.floor(Math.random() * surnames.length)])
+		}
+		else
+		{
+			$("#generatedName").text(femaleNames[Math.floor(Math.random() * femaleNames.length)] + " " + surnames[Math.floor(Math.random() * surnames.length)])
+		}
+
+
+
+	}
+
+	
+
+
+	
+</script>
+</body>
