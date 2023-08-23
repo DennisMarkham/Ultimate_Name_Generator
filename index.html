@@ -18,8 +18,7 @@
 	<p id = "generatedName"></p>
 <script>
 
-//this is just to generate a list of checkboxes.  It assumes male and female names have the same keys.
-//gosh this is a crude program, but at least I'm practicing.
+
 
 
 const maleNames={
@@ -47,12 +46,12 @@ const firstNameCultures = Object.keys(maleNames);
 const surnameCultures = Object.keys(surnames);
 
 	for(x in firstNameCultures){
-		$("#firstNameSpace").append("<input type = 'checkbox' class = 'fn' value = 'maleNames." + x + "'>" + firstNameCultures[x] + "<br>")
+		$("#firstNameSpace").append("<input type = 'checkbox' class = 'fn' value = 'maleNames." + firstNameCultures[x] + "'>" + firstNameCultures[x] + "<br>")
 
 	}
 
 	for(x in surnameCultures){
-		$("#surnameSpace").append("<input type = 'checkbox' value = 'surnames." + x + "'>" + surnameCultures[x] + "<br>")
+		$("#surnameSpace").append("<input type = 'checkbox' value = 'surnames." + surnameCultures[x] + "'>" + surnameCultures[x] + "<br>")
 	}
 
 
@@ -75,10 +74,11 @@ const surnameCultures = Object.keys(surnames);
 		 	{
 		 		
 		 		console.log("checked");
-		 		
+		 		console.log(x)
 
-		 		
-		 		selectionPool.concat[x.value]
+		 		//okay, I think this cut doesn't work because this string value just cannot be a
+		 		//reference to an array?
+		 		selectionPool.concat([x.value])
 		 	}
 		 }
 
