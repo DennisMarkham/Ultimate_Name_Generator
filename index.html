@@ -24,6 +24,10 @@
 		<input type = "checkbox" value = "french" class = "surname"> french
 		<br />
 		<input type = "checkbox" value = "spanish" class = "surname"> spanish
+		<br />
+		<input type = "checkbox" value = "chinese" class = "surname"> chinese
+		<br />
+		<input type = "checkbox" value = "irish" class = "surname"> irish
 	</div>
 	<br />
 	<button onClick="genName()">Generate Name</button>
@@ -31,19 +35,21 @@
 <script>
 
 
-f_anglo = ["Stacey", "Jennifer", "Kelsey"];
-f_french = ["Marie", "Claire", "Elise"];
+f_anglo = ["Stacey", "Jennifer", "Kelsey", "Chelsey", "Sarah", "Alexandra"];
+f_french = ["Marie", "Claire", "Elise", "Delphine", "Simone"];
 f_spanish = ["Carmen", "Angelita"];
 
-m_anglo = ["John", "Mike", "Jason"];
-m_french = ["Pierre", "Jean", "Didier"];
-m_spanish = ["Diego", "Jorge", "Jose"];
 
-s_anglo = ["Smith", "Jones", "Jackson"];
-s_french = ["Dupuis", "Trichet", "Brissont"];
-s_spanish = ["Ramirez", "Ruiz", "Mendez"];
+m_anglo = ["John", "Mike", "Jason", "Thomas", "Karl", "George", "Peter", "Alexander", "Dudley", "Harry", "Oliver"];
+m_french = ["Pierre", "Jean", "Didier", "Georges", "Armand"];
+m_spanish = ["Diego", "Jorge", "Jose", "Carlos"];
 
 
+s_anglo = ["Smith", "Jones", "Jackson", "Blair", "Kean", "Johnson"];
+s_french = ["Dupuis", "Dupont", "Trichet", "Brissont", "Boucher"];
+s_spanish = ["Ramirez", "Ruiz", "Mendez", "Gomez"];
+s_chinese = ["Wu", "Wong", "Lu", "Li", "Zhoa"];
+s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
 
 
 
@@ -101,6 +107,12 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 						break;
 						case "spanish":
 						potentialSurnames = potentialSurnames.concat(s_spanish);
+						break;
+						case "chinese":
+						potentialSurnames = potentialSurnames.concat(s_chinese);
+						break;
+						case "irish":
+						potentialSurnames = potentialSurnames.concat(s_irish);
 						break;
 					}
 				}
