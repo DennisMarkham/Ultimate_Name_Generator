@@ -15,6 +15,12 @@
 		<input type = "checkbox" value = "french" class = "firstName"> french
 		<br />
 		<input type = "checkbox" value = "spanish" class = "firstName"> spanish
+		<br />
+		<input type = "checkbox" value = "italian" class = "firstName"> italian
+		<br />
+		<input type = "checkbox" value = "african_american" class = "firstName"> african american
+		<br />
+		<input type = "checkbox" value = "country_cajun" class = "firstName"> country/cajun
 	</div>
 	<br />
 	Last name:
@@ -28,6 +34,8 @@
 		<input type = "checkbox" value = "chinese" class = "surname"> chinese
 		<br />
 		<input type = "checkbox" value = "irish" class = "surname"> irish
+		<br />
+		<input type = "checkbox" value = "italian" class = "surname"> italian
 	</div>
 	<br />
 	<button onClick="genName()">Generate Name</button>
@@ -35,22 +43,26 @@
 <script>
 
 
-f_anglo = ["Stacey", "Jennifer", "Kelsey", "Chelsey", "Sarah", "Alexandra"];
+f_anglo = ["Stacey", "Jennifer", "Kelsey", "Chelsey", "Sarah", "Alexandra", "Tina", "Tiffany"];
 f_french = ["Marie", "Claire", "Elise", "Delphine", "Simone"];
 f_spanish = ["Carmen", "Angelita"];
+f_african_american = ["Kenisha", "Tyesha", "LaShanda"]
+f_italian = ["Carmela", "Caterina"]
+f_cajun_country = ["Agnus"]
 
-
-m_anglo = ["John", "Mike", "Jason", "Thomas", "Karl", "George", "Peter", "Alexander", "Dudley", "Harry", "Oliver"];
+m_anglo = ["John", "Mike", "Jason", "Thomas", "Karl", "George", "Peter", "Alexander", "Dudley", "Harry", "Oliver", "Adam"];
 m_french = ["Pierre", "Jean", "Didier", "Georges", "Armand"];
 m_spanish = ["Diego", "Jorge", "Jose", "Carlos"];
+m_african_american = ["Tyrel", "Jamal", "Jabari"];
+m_italian = ["Giovanni", "Leonardo", "Benito"];
+m_cajun_country = ["Bubba", "Cleetus", "Oatis"];
 
-
-s_anglo = ["Smith", "Jones", "Jackson", "Blair", "Kean", "Johnson"];
+s_anglo = ["Smith", "Jones", "Jackson", "Blair", "Abrams", "Keller", "Brown", "Black", "White", "Kean", "Johnson"];
 s_french = ["Dupuis", "Dupont", "Trichet", "Brissont", "Boucher"];
 s_spanish = ["Ramirez", "Ruiz", "Mendez", "Gomez"];
 s_chinese = ["Wu", "Wong", "Lu", "Li", "Zhoa"];
 s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
-
+s_italian = ["Sforza", "Malateste", "DeLuca", "Juliani"]
 
 
 	function genName(){
@@ -65,7 +77,7 @@ s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
 		let potentialFirstNames = [];
 		let potentialSurnames = [];
 
-		function genderedNameMaker(array1, array2, array3)
+		function genderedNameMaker(array1, array2, array3, array4, array5, array6)
 		{
 			for(let x in firstNameBoxes){
 				//this runs through the boxes under "Last name:" and checks which ones are checked
@@ -82,6 +94,14 @@ s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
 						case "spanish":
 						potentialFirstNames = potentialFirstNames.concat(array3);
 						break;
+						case "italian":
+						potentialFirstNames = potentialFirstNames.concat(array4);
+						break;
+						case "african_american":
+						potentialFirstNames = potentialFirstNames.concat(array5);
+						break;
+						case "country_cajun":
+						potentialFirstNames = potentialFirstNames.concat(array6)
 
 					}
 				}
@@ -114,6 +134,9 @@ s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
 						case "irish":
 						potentialSurnames = potentialSurnames.concat(s_irish);
 						break;
+						case "italian":
+						potentialSurnames = potentialSurnames.concat(s_italian);
+						break;
 					}
 				}
 			}
@@ -131,11 +154,11 @@ s_irish = ["McDunnaugh", "O'Connor", "McArthy", "Kilpatrick", "Fitzgerald"]
 		if($("#gender").val() == "male")
 		{
 		
-		 genderedNameMaker(m_anglo, m_french, m_spanish)
+		 genderedNameMaker(m_anglo, m_french, m_spanish, m_italian, m_african_american, m_cajun_country);
 		 }	
 		else
 		{
-		genderedNameMaker(f_anglo, f_french, m_spanish)
+		genderedNameMaker(f_anglo, f_french, f_spanish, f_italian, f_african_american, f_cajun_country);
 		}
 
 }
