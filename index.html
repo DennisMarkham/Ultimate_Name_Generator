@@ -55,13 +55,12 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 		let firstNameBoxes = document.getElementsByClassName("firstName");
 		let surnameBoxes = document.getElementsByClassName("surname");
 
-
-		if($("#gender").val() == "male")
-		{
 			//empty arrays that will be filled with cultural arrays based on what boxes are checked.
 		let potentialFirstNames = [];
 		let potentialSurnames = [];
 
+		function genderedNameMaker(array1, array2, array3)
+		{
 			for(let x in firstNameBoxes){
 				//this runs through the boxes under "Last name:" and checks which ones are checked
 				//depending on which are checked, it will add them to array of potential names
@@ -69,13 +68,13 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 				{
 					switch(firstNameBoxes[x].value){
 						case "anglo":
-						potentialFirstNames = potentialFirstNames.concat(m_anglo);
+						potentialFirstNames = potentialFirstNames.concat(array1);
 						break;
 						case "french":
-						potentialFirstNames = potentialFirstNames.concat(m_french);
+						potentialFirstNames = potentialFirstNames.concat(array2);
 						break;
 						case "spanish":
-						potentialFirstNames = potentialFirstNames.concat(m_spanish);
+						potentialFirstNames = potentialFirstNames.concat(array3);
 						break;
 
 					}
@@ -115,67 +114,16 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 			//after compiling an array of potential first names  and surnames, it picks a random item
 			//from each array, and then smooshes them toghether to make a name.
 			$("#generatedName").text(potentialFirstNames[Math.floor(Math.random() * potentialFirstNames.length)] + " " +  potentialSurnames[Math.floor(Math.random() * potentialSurnames.length)]);
-		 
+		}
+
+		if($("#gender").val() == "male")
+		{
+		
+		 genderedNameMaker(m_anglo, m_french, m_spanish)
 		 }	
 		else
 		{
-				//empty arrays that will be filled with cultural arrays based on what boxes are checked.
-		let potentialFirstNames = [];
-		let potentialSurnames = [];
-
-			for(let x in firstNameBoxes){
-				//this runs through the boxes under "Last name:" and checks which ones are checked
-				//depending on which are checked, it will add them to array of potential names
-				if(firstNameBoxes[x].checked)
-				{
-					switch(firstNameBoxes[x].value){
-						case "anglo":
-						potentialFirstNames = potentialFirstNames.concat(f_anglo);
-						break;
-						case "french":
-						potentialFirstNames = potentialFirstNames.concat(f_french);
-						break;
-						case "spanish":
-						potentialFirstNames = potentialFirstNames.concat(f_spanish);
-						break;
-
-					}
-				}
-			}
-
-			for(let x in surnameBoxes){
-				//same thing but with last names
-				if(surnameBoxes[x].checked)
-				{
-					console.log("checked")
-					//this console.log fires the appropriate amount of times.
-
-					console.log(surnameBoxes[x].value);
-					//these all show the proper values
-
-					switch(surnameBoxes[x].value)
-					{
-						case "anglo":
-						potentialSurnames = potentialSurnames.concat(s_anglo);
-						break;
-						case "french":
-						potentialSurnames = potentialSurnames.concat(s_french);
-						break;
-						case "spanish":
-						potentialSurnames = potentialSurnames.concat(s_spanish);
-						break;
-					}
-				}
-			}
-
-			//this never fills
-			console.log(potentialFirstNames)
-			console.log(potentialSurnames);
-
-			//now we finally generate that name
-			//after compiling an array of potential first names  and surnames, it picks a random item
-			//from each array, and then smooshes them toghether to make a name.
-			$("#generatedName").text(potentialFirstNames[Math.floor(Math.random() * potentialFirstNames.length)] + " " +  potentialSurnames[Math.floor(Math.random() * potentialSurnames.length)]);
+		genderedNameMaker(f_anglo, f_french, m_spanish)
 		}
 
 }
