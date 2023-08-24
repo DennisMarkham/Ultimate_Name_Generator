@@ -10,20 +10,20 @@
 	First name:
 	<br />
 	<div class = "nameSpace">
-		<input type = "checkbox" value = "anglo" class = "firstName">
+		<input type = "checkbox" value = "anglo" class = "firstName"> anglo
 		<br />
-		<input type = "checkbox" value = "french" class = "firstName">
+		<input type = "checkbox" value = "french" class = "firstName"> french
 		<br />
-		<input type = "checkbox" value = "spanish" class = "firstName">
+		<input type = "checkbox" value = "spanish" class = "firstName"> spanish
 	</div>
 	<br />
 	Last name:
 	<div class = "nameSpace">
-		<input type = "checkbox" value = "anglo" class = "surname">
+		<input type = "checkbox" value = "anglo" class = "surname"> anglo
 		<br />
-		<input type = "checkbox" value = "french" class = "surname">
+		<input type = "checkbox" value = "french" class = "surname"> french
 		<br />
-		<input type = "checkbox" value = "spanish" class = "surname">
+		<input type = "checkbox" value = "spanish" class = "surname"> spanish
 	</div>
 	<br />
 	<button onClick="genName()">Generate Name</button>
@@ -58,6 +58,7 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 
 		if($("#gender").val() == "male")
 		{
+			//empty arrays that will be filled with cultural arrays based on what boxes are checked.
 		let potentialFirstNames = [];
 		let potentialSurnames = [];
 
@@ -68,13 +69,13 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 				{
 					switch(firstNameBoxes[x].value){
 						case "anglo":
-						potentialFirstNames.concat(m_anglo);
+						potentialFirstNames = potentialFirstNames.concat(m_anglo);
 						break;
 						case "french":
-						potentialFirstNames.concat(m_french);
+						potentialFirstNames = potentialFirstNames.concat(m_french);
 						break;
 						case "spanish":
-						potentialFirstNames.concat(m_spanish);
+						potentialFirstNames = potentialFirstNames.concat(m_spanish);
 						break;
 
 					}
@@ -85,20 +86,30 @@ s_spanish = ["Ramirez", "Ruiz", "Mendez"];
 				//same thing but with last names
 				if(surnameBoxes[x].checked)
 				{
+					console.log("checked")
+					//this console.log fires the appropriate amount of times.
+
+					console.log(surnameBoxes[x].value);
+					//these all show the proper values
+
 					switch(surnameBoxes[x].value)
 					{
 						case "anglo":
-						potentialSurnames.concat(s_anglo);
+						potentialSurnames = potentialSurnames.concat(s_anglo);
 						break;
 						case "french":
-						potentialSurnames.concat(s_french);
+						potentialSurnames = potentialSurnames.concat(s_french);
 						break;
 						case "spanish":
-						potentialSurnames.concat(s_spanish);
+						potentialSurnames = potentialSurnames.concat(s_spanish);
 						break;
 					}
 				}
 			}
+
+			//this never fills
+			console.log(potentialFirstNames)
+			console.log(potentialSurnames);
 
 			//now we finally generate that name
 			//after compiling an array of potential first names  and surnames, it picks a random item
